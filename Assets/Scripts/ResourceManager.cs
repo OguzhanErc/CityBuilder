@@ -4,11 +4,9 @@ using UnityEngine;
 
 public class ResourceManager : MonoBehaviour
 {
-
     [Header("Resources")]
 
     [Space(8)]
-
 
     //Sets the max amount of wood.
     public int maxWood;
@@ -30,8 +28,14 @@ public class ResourceManager : MonoBehaviour
 
     public bool debugBool = false;
 
+    public int Wood { get => wood; set => wood = value; }
+    public int Stone { get => stone; set => stone = value; }
+    public int PremiumC { get => premiumC; set => premiumC = value; }
+    public int StandardC { get => standardC; set => standardC = value; }
+
     private void Awake()
     {
+        //Initializing the singleton pattern (not for production)
         Instance = this;
     }
 
@@ -44,57 +48,97 @@ public class ResourceManager : MonoBehaviour
             debugBool = false;
         }
     }
+
+
     /// <summary>
     /// Adds more wood to the inventory.
     /// </summary>
     /// <param name="amount">Amount to add directly to our existing wood</param>
-
-    public void AddWood(int amount)
+    public bool AddWood(int amount)
     {
-        wood += amount;
+        if ((wood + amount)<=maxWood)
+        {
+            Wood += amount;
 
-        //TODO: Update the wood UI to show the correct amount of wood.
+            //Updates the corresponding UI.
+            UIManager.instance.UpdateWoodUI(Wood, maxWood);
+            return true;
+        }
+        else
+        {
+            return false;
+        }
     }
+
 
     /// <summary>
     /// Adds more stone to the inventory.
     /// </summary>
     /// <param name="amount">Amount to add directly to our existing stone</param>
-    public void AddStone(int amount)
+    public bool AddStone(int amount)
     {
-        stone += amount;
+        if ((stone + amount)<=maxStone)
+        {
+            Stone += amount;
 
-        //TODO: Update the stone UI to show the correct amount of stone.
+            //Updates the corresponding UI.
+            UIManager.instance.UpdateStoneUI(Stone, maxStone);
+            return true;
+        }
+        else
+        {
+            return false;
+        }       
     }
+
 
     /// <summary>
     /// Adds more premium currency to the inventory.
     /// </summary>
     /// <param name="amount">Amount to add directly to our existing premium currency</param>
-    public void AddPremiumC(int amount)
+    public bool AddPremiumC(int amount)
     {
-        premiumC += amount;
+        if ((premiumC + amount)<=maxPremiumCurrency)
+        {
+            PremiumC += amount;
 
-        //TODO: Update the premium currency UI to show the correct amount of premium currency.
+            //Updates the corresponding UI.
+            UIManager.instance.UpdatePremiumCUI(PremiumC, maxPremiumCurrency);
+            return true;
+        }
+        else
+        {
+            return false;
+        }
     }
+
 
     /// <summary>
     /// Adds more standard currency to the inventory.
     /// </summary>
     /// <param name="amount">Amount to add directly to our existing standard currency</param>
-    public void AddStandardC(int amount)
+    public bool AddStandardC(int amount)
     {
-        standardC += amount;
+        if ((standardC + amount)<=maxStandardCurrency)
+        {
+            StandardC += amount;
 
-        //TODO: Update the standard currency UI to show the correct amount of standard currency.
+            //Updates the corresponding UI.
+            UIManager.instance.UpdateStandardCUI(StandardC, maxStandardCurrency);
+            return true;
+        }
+        else
+        {
+            return false;
+        }      
     }
 
     void PrintCurrentResources()
     {
-        Debug.Log("wood" + wood);
-        Debug.Log("stone" + stone);
-        Debug.Log("standard" + standardC);
-        Debug.Log("premium" + premiumC);
+        Debug.Log("wood" + Wood);
+        Debug.Log("stone" + Stone);
+        Debug.Log("standard" + StandardC);
+        Debug.Log("premium" + PremiumC);
     }
 
 }

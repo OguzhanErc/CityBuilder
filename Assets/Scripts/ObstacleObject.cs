@@ -15,17 +15,27 @@ public class ObstacleObject : MonoBehaviour
         Debug.Log("Clicked on " + gameObject.name);
 
         //OnClick Event
+        bool usedResource = false;
 
         //We can call directly the method that adds the resource
 
         switch (obstacleType)
         {
             case ObstacleType.Wood:
-                ResourceManager.Instance.AddWood(resourceAmount);
+                usedResource = ResourceManager.Instance.AddWood(resourceAmount);
                 break;
+
             case ObstacleType.Rock:
-                ResourceManager.Instance.AddStone(resourceAmount);
+                usedResource = ResourceManager.Instance.AddStone(resourceAmount);
                 break;
+        }
+        if (usedResource)
+        {
+            Destroy(gameObject);
+        }
+        else
+        {
+            Debug.Log("Could not destroy because inventory is full");
         }
     }
     public enum ObstacleType

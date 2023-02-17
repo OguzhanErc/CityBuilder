@@ -478,7 +478,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1340649838}
   m_FillRect: {fileID: 1340649837}
   m_HandleRect: {fileID: 0}
-  m_Direction: 1
+  m_Direction: 0
   m_MinValue: 0
   m_MaxValue: 1
   m_WholeNumbers: 0
@@ -658,11 +658,11 @@ RectTransform:
   m_Father: {fileID: 692850183}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 1, y: 0.5}
-  m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: -10, y: 0}
+  m_AnchorMin: {x: 0, y: 0.5}
+  m_AnchorMax: {x: 0, y: 0.5}
+  m_AnchoredPosition: {x: 10, y: 0}
   m_SizeDelta: {x: 160, y: 30}
-  m_Pivot: {x: 1, y: 0.5}
+  m_Pivot: {x: 0, y: 0.5}
 --- !u!114 &404424790
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -732,7 +732,7 @@ GameObject:
   - component: {fileID: 648909805}
   - component: {fileID: 648909804}
   m_Layer: 5
-  m_Name: ResourceContainer (1)
+  m_Name: ResourceContainer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -881,7 +881,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 939304254}
   m_FillRect: {fileID: 939304253}
   m_HandleRect: {fileID: 0}
-  m_Direction: 1
+  m_Direction: 0
   m_MinValue: 0
   m_MaxValue: 1
   m_WholeNumbers: 0
@@ -1093,7 +1093,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: -52.79, y: -15}
+  m_AnchoredPosition: {x: 52.79, y: -15}
   m_SizeDelta: {x: 134.4195, y: 15}
   m_Pivot: {x: 0.5, y: 0.00000025331974}
 --- !u!114 &861754288
@@ -1138,7 +1138,7 @@ MonoBehaviour:
     m_BestFit: 1
     m_MinSize: 10
     m_MaxSize: 40
-    m_Alignment: 3
+    m_Alignment: 5
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
@@ -1189,7 +1189,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: -52.79, y: -15}
+  m_AnchoredPosition: {x: 52.79, y: -15}
   m_SizeDelta: {x: 134.4195, y: 15}
   m_Pivot: {x: 0.5, y: 0.00000025331974}
 --- !u!114 &868780084
@@ -1234,7 +1234,7 @@ MonoBehaviour:
     m_BestFit: 1
     m_MinSize: 10
     m_MaxSize: 40
-    m_Alignment: 3
+    m_Alignment: 5
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
@@ -1715,6 +1715,7 @@ GameObject:
   - component: {fileID: 1176010870}
   - component: {fileID: 1176010872}
   - component: {fileID: 1176010873}
+  - component: {fileID: 1176010874}
   m_Layer: 0
   m_Name: _Manager
   m_TagString: Untagged
@@ -1785,10 +1786,39 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4020bd2fd68e3614cabb2b3025d24745, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxWood: 0
-  maxStone: 0
-  maxPremiumCurrency: 0
-  maxStandardCurrency: 0
+  maxWood: 200
+  maxStone: 200
+  maxPremiumCurrency: 500
+  maxStandardCurrency: 500
+  debugBool: 0
+--- !u!114 &1176010874
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1176010869}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2bd14f8d8bed2e7409f10068d663934a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  woodUI:
+    slider: {fileID: 692850184}
+    maxUI: {fileID: 861754289}
+    currentUI: {fileID: 404424791}
+  stoneUI:
+    slider: {fileID: 317892793}
+    maxUI: {fileID: 868780085}
+    currentUI: {fileID: 1857278212}
+  standardCUI:
+    slider: {fileID: 1657948611}
+    maxUI: {fileID: 1009615111}
+    currentUI: {fileID: 1893570254}
+  premiumCUI:
+    slider: {fileID: 2000236838}
+    maxUI: {fileID: 238319894}
+    currentUI: {fileID: 2072876603}
 --- !u!1 &1197025201
 GameObject:
   m_ObjectHideFlags: 0
@@ -2336,11 +2366,11 @@ RectTransform:
   m_Father: {fileID: 317892792}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 1, y: 0.5}
-  m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: -10, y: 0}
+  m_AnchorMin: {x: 0, y: 0.5}
+  m_AnchorMax: {x: 0, y: 0.5}
+  m_AnchoredPosition: {x: 10, y: 0}
   m_SizeDelta: {x: 160, y: 30}
-  m_Pivot: {x: 1, y: 0.5}
+  m_Pivot: {x: 0, y: 0.5}
 --- !u!114 &1857278211
 MonoBehaviour:
   m_ObjectHideFlags: 0
